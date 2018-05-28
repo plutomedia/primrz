@@ -25,28 +25,21 @@ var SCRIPT_UPDATE_TIME = 5,
   lastScript = null,
   scriptAnimate = null;
 
-  //debug and test. writing to Canvas
-
   var canvas = document.getElementById("editz");
-  // var context = canvas.getContext("2d");
-  // context.globalCompositeOperation='destination-over';
-  //
-  //
-  // context.fillStyle = "black";
-  // context.font = "bold 10px Arial";
-  // //context.fillText( "ijsdfnvkjfmnøksjnfmbøskfmvøksdfn",10,20);
-  // //context.fillText( getSourceCode(true),10,20);
-  //
-  // context.fillText(testDemo.toString(),10,20);
 
+///*
 
-  // var aceeditor = ace.edit("editorzz");
-  // console.log(aceeditor.getValue(), "lkdjfalk")
-  // var Changedcode  = aceeditor.getValue();
-  //
-  // aceeditor.setValue(Changedcode);
+//* adding plane
+var ark = new THREE.MeshBasicMaterial({overdraw: true, color:
+0x99ccff});
+LBbox =  new THREE.Mesh (new THREE.BoxGeometry (2,2,0.1), ark );
+LBbox.position.set (0,1.5,-3);
+env.scene.add (LBbox);
 
-
+//* adding camera
+arkCam = new THREE.OrthographicCamera (-110,110,220,-220, 10, 2000);
+arkCam.position.set (0,450,0);
+arkCam.up.set (0,0,-1);
 
 
 env.addEventListener("ready", function () {
@@ -107,7 +100,7 @@ env.addEventListener("keydown", function (evt) {
   console.log(aceeditor.getSelectedText(), "lkdjfalk")
   var Changedcode  = aceeditor.getSelectedText();
     window.localStorage.code = Changedcode;
-    
+
   if (evt[modA] && evt[modB]) {
     if (evt.keyCode === Primrose.Keys.E) {
       editor.visible = !editor.visible;
